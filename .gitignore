@@ -1,0 +1,44 @@
+# Aquí pongo carpetas que se modifican muchas veces con cada compilación, su contenido no debería ser trackeado o se j.de el proyecto pipipi
+
+# Bodrios de compilación (Siempre se crean con cada dotnet run)
+/bin/
+/obj/
+/artifacts/
+**/bin/
+**/obj/
+
+# INformación del IDE
+*.user
+*.userosscache
+*.suo
+*.userprefs
+.vs/
+.vscode/
+
+# Cosas del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Los mismisimos paquetes creados, NO se deben añaadir pues el desarrollador los obtiene con dotnet restore
+# Si se añaden aumentan el tamaño del repositorio de forma innecesaria
+packages/
+*.nupkg
+*.nupkg.sha512
+*.snupkg
+
+# Configuración local (No subir o los hackean como el argentino)
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+.env
+*.env
+
+# Logs y salidas, información irrelevante, esto no es Oracle
+*.log
+logs/
+
+# Archivos de pruebas, aunque aún no implementamos nada relacionado
+coverage/
+*.lcov
+*.opencover.xml
