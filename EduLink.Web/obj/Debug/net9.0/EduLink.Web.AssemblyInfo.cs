@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EduLink.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+366ff24afd0d502049b0d103ea20056f5be9808b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+30a541f3a2c9a7c4e67bf648551e5f6c584649c3")]
 [assembly: System.Reflection.AssemblyProductAttribute("EduLink.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EduLink.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
