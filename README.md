@@ -2,6 +2,8 @@
 Group Project for Software Engineering II course.
 -> Will update l8r
 
+![Demostración de clonado](./Resources/Demo-1.gif)
+
 ## Cómo solucionar las dependencias
 Recuerden que estamos trabajando con .NET, ASP y Razor Pages, el
 encargado de manejar paquetes en .NET es nugget.
@@ -18,10 +20,12 @@ Si usan VS Community 2022, usen el boton verde de compilado.
 
 Si usan otro IDE o la consola de comando, corran `dotnet run` en /EduLink.Web, esto compila el proyecto.
 
+![Demostración del compilado](./Resources/Demo-2.gif)
+
 ## Despliegue
 No es el titulo que corresponde a esta parte por ahora.
 
-Si desean ver la página web, accedan a `http://localhost:5114` desde un navegador luego de compilar y correr el programa.
+Si desean ver la página web, accedan a `http://localhost:XXXX` desde un navegador luego de compilar y correr el programa.
 
 Por ahora deberían ver:
 - Home, la página de inicio por ahora.
