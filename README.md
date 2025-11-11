@@ -31,5 +31,14 @@ Por ahora deberían ver:
 - Home, la página de inicio por ahora.
 - Privacy, autogenerado por ASP.NET, sólo es una plantilla.
 
+## Estructura del proyecto
+Los nombres de las capas del proyecto fueron autogeneradas por ASP.NET, pero a continuación se explica sus equivalentes:
+- Application == Business Logic (BL) -> Aquí debe trabajar Xavs
+- Domain == Persistencia de objetos (DBO)
+- Infrastructure == Database Access Layer (DAL)
+- Web == Interfaz de usuario / Páginas Web (UI) -> Aquí debe trabajar Sebas
+
+En el caso de Gabito, paséate donde quieras. La capa de base de datos la configuramos juntos después.
+
 ### Nota adicional
 NUNCA hagan stage ni commit durante la ejecución de una build o compilado, se va a dañar la rama y el flujo de trabajo, obligandolos a borrar cosas e incluso prohibiendo borrarlas.
