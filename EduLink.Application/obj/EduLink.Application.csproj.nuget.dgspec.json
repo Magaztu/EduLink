@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SOF PROY 2\\EduLink\\EduLink.Application\\EduLink.Application.csproj": {}
+    "D:\\SOF PROY 2\\Xavs side\\Edu\\EduLink.Application\\EduLink.Application.csproj": {}
   },
   "projects": {
-    "D:\\SOF PROY 2\\EduLink\\EduLink.Application\\EduLink.Application.csproj": {
+    "D:\\SOF PROY 2\\Xavs side\\Edu\\EduLink.Application\\EduLink.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SOF PROY 2\\EduLink\\EduLink.Application\\EduLink.Application.csproj",
+        "projectUniqueName": "D:\\SOF PROY 2\\Xavs side\\Edu\\EduLink.Application\\EduLink.Application.csproj",
         "projectName": "EduLink.Application",
-        "projectPath": "D:\\SOF PROY 2\\EduLink\\EduLink.Application\\EduLink.Application.csproj",
+        "projectPath": "D:\\SOF PROY 2\\Xavs side\\Edu\\EduLink.Application\\EduLink.Application.csproj",
         "packagesPath": "C:\\Users\\Mathias\\.nuget\\packages\\",
-        "outputPath": "D:\\SOF PROY 2\\EduLink\\EduLink.Application\\obj\\",
+        "outputPath": "D:\\SOF PROY 2\\Xavs side\\Edu\\EduLink.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Visual S\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\SOF PROY 2\\EduLink\\EduLink.Domain\\EduLink.Domain.csproj": {
-                "projectPath": "D:\\SOF PROY 2\\EduLink\\EduLink.Domain\\EduLink.Domain.csproj"
+              "D:\\SOF PROY 2\\Xavs side\\Edu\\EduLink.Domain\\EduLink.Domain.csproj": {
+                "projectPath": "D:\\SOF PROY 2\\Xavs side\\Edu\\EduLink.Domain\\EduLink.Domain.csproj"
               }
             }
           }
@@ -73,14 +73,14 @@
         }
       }
     },
-    "D:\\SOF PROY 2\\EduLink\\EduLink.Domain\\EduLink.Domain.csproj": {
+    "D:\\SOF PROY 2\\Xavs side\\Edu\\EduLink.Domain\\EduLink.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SOF PROY 2\\EduLink\\EduLink.Domain\\EduLink.Domain.csproj",
+        "projectUniqueName": "D:\\SOF PROY 2\\Xavs side\\Edu\\EduLink.Domain\\EduLink.Domain.csproj",
         "projectName": "EduLink.Domain",
-        "projectPath": "D:\\SOF PROY 2\\EduLink\\EduLink.Domain\\EduLink.Domain.csproj",
+        "projectPath": "D:\\SOF PROY 2\\Xavs side\\Edu\\EduLink.Domain\\EduLink.Domain.csproj",
         "packagesPath": "C:\\Users\\Mathias\\.nuget\\packages\\",
-        "outputPath": "D:\\SOF PROY 2\\EduLink\\EduLink.Domain\\obj\\",
+        "outputPath": "D:\\SOF PROY 2\\Xavs side\\Edu\\EduLink.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Visual S\\Shared\\NuGetPackages"
