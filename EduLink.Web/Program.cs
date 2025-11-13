@@ -1,9 +1,17 @@
 // Línea para poder modificar en VS Code, los using de .Net se comportan raros
 
+using EduLink.Application.Events;
+using EduLink.Application.Interfaces;
+using EduLink.Application.UseCases;
+using EduLink.Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
 // using Microsoft.EntityFrameworkCore; // Aún no se configura el ORM
 
 var builder = WebApplication.CreateBuilder(args);
+
+//Singleton no puede ser omgggggg
+builder.Services.AddScoped<PagarReservaUseCase>();
+builder.Services.AddSingleton<IDomainObserver<ReservaConfirmadaEvent>, ConsoleEmailNotificador>();
 
 // Add services to the container.
 builder.Services.AddRazorPages();

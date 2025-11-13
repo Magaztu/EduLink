@@ -40,6 +40,6 @@ public class ReservarServicioUseCase
         var ultimaReserva = cliente.Historial.Last();
         await _reservaRepo.GuardarAsync(ultimaReserva);
 
-        // Disparar evento cuando hagamos oBserver
+        // ya no va aki el observe r r r
     }
 }

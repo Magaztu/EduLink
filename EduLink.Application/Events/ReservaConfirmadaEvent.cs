@@ -4,6 +4,8 @@ namespace EduLink.Application.Events;
 
 public record ReservaConfirmadaEvent(
     Guid ReservaId,
-    Cliente Cliente,
-    Servicio Servicio,
-    DateTime FechaSlot);
+    string ClienteNombre,
+    string ClienteEmail,
+    string ServicioTitulo,
+    DateTime FechaSlot
+);
