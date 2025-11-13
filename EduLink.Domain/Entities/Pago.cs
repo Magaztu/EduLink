@@ -10,22 +10,17 @@ public class Pago
     public Guid Id { get; init; } = Guid.NewGuid();
     public Reserva Reserva { get; init; }
     public IPagoStrategy MetodoPago { get; set; } // fuera enums buu
-    public IPrecioStrategy PoliticaPrecio { get; set; }
+    //public IPrecioStrategy PoliticaPrecio { get; set; }
     public string Estado { get; private set; } = "Pendiente";
-    public decimal PrecioBase { get; set; }
+    //public decimal PrecioBase { get; set; }
 
-    public decimal MontoTotal => PoliticaPrecio.Calcular(PrecioBase, Reserva.Cliente);
+    public decimal MontoTotal { get; }
 
-    public Pago(
-        Reserva reserva,
-        IPagoStrategy metodoPago,
-        IPrecioStrategy politicaPrecio,
-        decimal precioBase)
+    public Pago(Reserva reserva, IPagoStrategy metodoPago, decimal montoTotal)
     {
         Reserva = reserva;
         MetodoPago = metodoPago;
-        PoliticaPrecio = politicaPrecio;
-        PrecioBase = precioBase;
+        MontoTotal = montoTotal;
     }
 
     public async Task AprobarAsync()
