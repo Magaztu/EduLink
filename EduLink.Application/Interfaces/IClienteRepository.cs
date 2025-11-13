@@ -4,6 +4,6 @@ namespace EduLink.Application.Interfaces;
 
 public interface IClienteRepository
 {
-    Task<Cliente> ObtenerPorIdAsync(Guid id);
+    Task<Cliente?> ObtenerPorIdAsync(Guid id);
     Task GuardarAsync(Cliente cliente);
 }
