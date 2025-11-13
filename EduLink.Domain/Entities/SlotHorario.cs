@@ -1,4 +1,6 @@
+using EduLink.Domain.Entities.States;
 using EduLink.Domain.Enums;
+using System;
 
 namespace EduLink.Domain.Entities;
 
@@ -9,24 +11,14 @@ public class SlotHorario
     public DateTime Fin { get; set; }
     public int CupoMax { get; set; }
     public int CupoActual { get; private set; } = 0;
-    public EstadoSlot Estado { get; private set; } = EstadoSlot.Disponible;
 
-    public void Reservar()
-    {
-        if (Estado != EstadoSlot.Disponible)
-            throw new InvalidOperationException("No se puede reservar un slot no disponible.");
+    // Exposicion
+    public EstadoSlot Estado => EstadoInterno.Nombre;
 
-        if (CupoActual >= CupoMax)
-            throw new InvalidOperationException("El cupo máximo ha sido alcanzado.");
+    // No exposicion pero llamado por expo
+    internal SlotState EstadoInterno { get; set; } = new DisponibleState();
 
-        CupoActual++;
-        if (CupoActual >= CupoMax)
-            Estado = EstadoSlot.Reservado;
-    }
-
-    public void Cancelar()
-    {
-        if (CupoActual > 0) CupoActual--;
-        Estado = EstadoSlot.Disponible; // o Expirado después nose, aún no hacemos las politicas de ccancelar
-    }
+    public void Reservar() => EstadoInterno.Reservar(this);
+    public void Cancelar() => EstadoInterno.Cancelar(this);
+    public void Expirar() => EstadoInterno.Expirar(this);
 }
