@@ -10,7 +10,7 @@ public class SlotHorario
     public DateTime Inicio { get; set; }
     public DateTime Fin { get; set; }
     public int CupoMax { get; set; }
-    public int CupoActual { get; private set; } = 0;
+    public int CupoActual { get; set; } = 0;
 
     // Exposicion
     public EstadoSlot Estado => EstadoInterno.Nombre;

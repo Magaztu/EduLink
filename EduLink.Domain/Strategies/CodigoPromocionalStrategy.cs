@@ -1,3 +1,4 @@
+using EduLink.Domain.Entities;
 using EduLink.Domain.Interfaces;
 using System;
 

@@ -1,3 +1,5 @@
+using EduLink.Domain.Entities;
+
 namespace EduLink.Domain.Interfaces;
 
 public interface IPrecioStrategy

@@ -1,4 +1,5 @@
-using System; // Visual estudio añadio esto
+using System;
+using EduLink.Domain.Enums; // Visual estudio aï¿½adio esto
 
 namespace EduLink.Domain.Entities.States;
 
