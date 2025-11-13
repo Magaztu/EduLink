@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EduLink.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9dfc49538cd7f133f5862dfa764bde507d921555")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d2fb0039287925fb1c5b8d5ce0920767188d745")]
 [assembly: System.Reflection.AssemblyProductAttribute("EduLink.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EduLink.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
