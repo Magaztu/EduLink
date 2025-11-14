@@ -1,0 +1,49 @@
+:root {
+    --primary: #3B82F6;
+    --accent: #FBBF24;
+    --dark: #111827;
+    --soft: #6B7280;
+    --border: #E5E7EB;
+    --bgsoft: #F9FAFB;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bgsoft);
+    color: var(--dark);
+}
+
+/* Inputs */
+.form-control {
+    border-radius: 0.75rem;
+    border-color: var(--border);
+    padding: 0.75rem 1rem;
+}
+
+.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 .25rem rgba(59,130,246,.25);
+}
+
+/* Botón principal con degradado */
+.btn-edulink {
+    background: linear-gradient(90deg, var(--accent), var(--primary));
+    color: white;
+    font-weight: 600;
+    border-radius: 2rem;
+    padding: 0.75rem;
+    transition: 0.2s;
+}
+
+.btn-edulink:hover {
+    opacity: .95;
+    transform: translateY(-1px);
+}
+
+.shadow-card {
+    box-shadow: 0px 25px 60px rgba(0,0,0,0.08) !important;
+}
+
+.rounded-card {
+    border-radius: 1rem !important;
+}
