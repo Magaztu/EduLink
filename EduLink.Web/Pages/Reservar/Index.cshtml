@@ -1,0 +1,129 @@
+@page
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EduLink – Reservar servicio</title>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+   
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    
+    <link rel="stylesheet" href="~/css/edulink-theme.css" asp-append-version="true" />
+</head>
+
+<body class="edulink-body-page">
+
+   
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm py-2">
+        <div class="container">
+
+            <a class="navbar-brand d-flex align-items-center gap-2" asp-page="/Index">
+                <img src="~/imagenes/logo.jpg" width="36" />
+                <span class="fw-semibold fs-5">
+                    <span class="edulink-brand-main">Edu</span><span class="edulink-brand-highlight">Link</span>
+                </span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPublic">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarPublic">
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="/Index">Inicio</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="/Explorar/Index">Explorar</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="/Historial/Index">Historial</a>
+                    </li>
+
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-primary px-3 py-1 rounded-pill" asp-page="/Auth/Login">Iniciar sesión</a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+ 
+    <div class="container py-5" style="max-width: 850px; font-family: 'Inter', sans-serif;">
+
+        <h1 class="fw-bold mb-2 text-center">Reservar servicio</h1>
+        <p class="text-muted text-center mb-4">
+            Selecciona la fecha, hora y modalidad de tu clase. Luego podrás elegir el método de pago.
+        </p>
+
+        <div class="card shadow-sm p-4">
+
+           
+            <div class="p-3 rounded mb-4" style="background:#F9FAFB;">
+                <div class="d-flex justify-content-between">
+                    <h6 class="fw-bold mb-1">Tutoría de Matemáticas</h6>
+                    <span class="fw-bold text-primary">$12.00</span>
+                </div>
+                <span class="badge text-dark" style="background:#FBBF24;">Duración: 1 hora</span>
+                <p class="small text-muted mt-2">Puedes enlazar esto luego con el catálogo real.</p>
+            </div>
+
+           
+            <form method="post">
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Fecha</label>
+                    <input class="form-control" type="date" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Hora</label>
+                    <input class="form-control" type="time" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Modalidad</label>
+                    <select class="form-select">
+                        <option>Virtual</option>
+                        <option>Presencial</option>
+                    </select>
+                </div>
+
+                
+                <div class="mt-4 p-3 rounded" style="background:#F9FAFB;">
+                    <h6 class="fw-bold mb-2">Resumen de la reserva</h6>
+
+                    <p class="mb-1"><strong>Servicio:</strong> Tutoría de Matemáticas</p>
+                    <p class="mb-1"><strong>Fecha y hora:</strong> (Se mostrará una vez seleccionado)</p>
+                    <p class="mb-1"><strong>Total estimado:</strong> $12.00</p>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a asp-page="/Explorar/Index" class="btn btn-outline-secondary px-4">Volver a explorar</a>
+                    <a asp-page="/Pagos/Pago" class="btn btn-primary px-4">Continuar a método de pago</a>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
