@@ -10,14 +10,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>EduLink – Crear cuenta</title>
 
-    <!-- Inter -->
+    <!-- Inter font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Bootstrap 5 -->
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
     <!-- Tema EduLink -->
@@ -26,143 +24,85 @@
 
 <body class="edulink-auth-body">
 
-
     <div class="edulink-auth-wrapper d-flex align-items-center justify-content-center min-vh-100">
         <div class="card edulink-auth-card">
             <div class="card-body p-4 p-md-5">
 
-    
+                <!-- Branding -->
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <div class="d-flex align-items-center gap-2">
                         <div class="edulink-logo-circle">
                             <span>💡</span>
                         </div>
                         <div class="edulink-brand">
-                            <span class="edulink-brand-main">Edu</span><span class="edulink-brand-highlight">Link</span>
+                            <span class="edulink-brand-main">Edu</span>
+                            <span class="edulink-brand-highlight">Link</span>
                         </div>
                     </div>
 
-                    <span class="px-3 py-1 edulink-badge">
-                        Crear cuenta
-                    </span>
+                    <span class="px-3 py-1 edulink-badge">Crea tu cuenta</span>
                 </div>
 
+                <h1 class="h4 fw-semibold mb-3">Crear cuenta</h1>
                 <p class="text-muted small mb-4">
-                    Regístrate para reservar clases o publicar tus servicios.
+                    Completa tu información para comenzar a usar la plataforma.
                 </p>
 
-                <h1 class="h4 fw-semibold mb-2">Crear cuenta</h1>
-                <p class="text-muted mb-4">
-                    Completa tus datos para continuar.
-                </p>
-
-                <!-- FORMULARIO -->
                 <form method="post" novalidate>
 
-                    <!-- Nombre completo -->
+                    <!-- Nombre -->
                     <div class="mb-3">
-                        <label for="FullName" class="form-label">Nombre completo</label>
-                        <input
-                            type="text"
-                            id="FullName"
-                            name="FullName"
-                            class="form-control"
-                            placeholder="Tu nombre y apellidos"
-                            autocomplete="name"
-                            required />
+                        <label for="Nombre" class="form-label fw-semibold">Nombre completo</label>
+                        <input id="Nombre" name="Nombre" type="text" class="form-control"
+                               placeholder="Tu nombre y apellidos" required />
                     </div>
 
-                    <!-- Correo -->
+                    <!-- Email -->
                     <div class="mb-3">
-                        <label for="Email" class="form-label">Correo electrónico</label>
-                        <input
-                            type="email"
-                            id="Email"
-                            name="Email"
-                            class="form-control"
-                            placeholder="tucorreo@ejemplo.com"
-                            autocomplete="email"
-                            required />
+                        <label for="Email" class="form-label fw-semibold">Correo electrónico</label>
+                        <input id="Email" name="Email" type="email" class="form-control"
+                               placeholder="tucorreo@ejemplo.com" required />
                     </div>
 
-                    <!-- Tipo de cuenta -->
+                    <!-- Tipo Usuario -->
                     <div class="mb-3">
-                        <label class="form-label">Tipo de cuenta</label>
+                        <label for="TipoUsuario" class="form-label fw-semibold">Tipo de usuario</label>
+                        <select id="TipoUsuario" name="TipoUsuario" class="form-select" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="Cliente">Cliente</option>
+                            <option value="Proveedor">Proveedor</option>
+                        </select>
+                    </div>
 
-                        <div class="d-flex flex-column gap-2">
-
-                            <div class="form-check">
-                                <input
-                                    type="radio"
-                                    class="form-check-input"
-                                    id="TipoCliente"
-                                    name="TipoCuenta"
-                                    value="cliente"
-                                    checked />
-                                <label for="TipoCliente" class="form-check-label">
-                                    Cliente (reservar clases y talleres)
-                                </label>
-                            </div>
-
-                            <div class="form-check">
-                                <input
-                                    type="radio"
-                                    class="form-check-input"
-                                    id="TipoProveedor"
-                                    name="TipoCuenta"
-                                    value="proveedor" />
-                                <label for="TipoProveedor" class="form-check-label">
-                                    Proveedor (publicar servicios y gestionar agenda)
-                                </label>
-                            </div>
-
-                        </div>
+                    <!-- Bio SOLO si es Proveedor -->
+                    <div class="mb-3" id="bioContainer" style="display:none;">
+                        <label for="Bio" class="form-label fw-semibold">Biografía / Descripción</label>
+                        <textarea id="Bio" name="Bio" class="form-control" rows="3"
+                                  placeholder="Describe tus servicios, experiencia o especialización…"></textarea>
                     </div>
 
                     <!-- Contraseña -->
                     <div class="mb-3">
-                        <label for="Password" class="form-label">Contraseña</label>
-                        <input
-                            type="password"
-                            id="Password"
-                            name="Password"
-                            class="form-control"
-                            placeholder="••••••••"
-                            autocomplete="new-password"
-                            required />
+                        <label for="Password" class="form-label fw-semibold">Contraseña</label>
+                        <input id="Password" name="Password" type="password" class="form-control"
+                               placeholder="••••••••" required />
                     </div>
 
-                    <!-- Confirmación -->
+                    <!-- Confirmar contraseña -->
                     <div class="mb-3">
-                        <label for="ConfirmPassword" class="form-label">Confirmar contraseña</label>
-                        <input
-                            type="password"
-                            id="ConfirmPassword"
-                            name="ConfirmPassword"
-                            class="form-control"
-                            placeholder="Repite tu contraseña"
-                            autocomplete="new-password"
-                            required />
+                        <label for="ConfirmPassword" class="form-label fw-semibold">Confirmar contraseña</label>
+                        <input id="ConfirmPassword" name="ConfirmPassword" type="password" class="form-control"
+                               placeholder="Repite tu contraseña" required />
                     </div>
 
-                    <!-- Aceptar términos -->
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" id="Terms" required />
-                        <label class="form-check-label small" for="Terms">
-                            Acepto los términos y condiciones del servicio.
-                        </label>
-                    </div>
-
-                    <!-- BOTÓN -->
-                    <button type="submit" class="btn btn-primary w-100 mb-3">
+                    <button type="submit" class="btn btn-primary w-100 mt-3">
                         Crear cuenta
                     </button>
 
                 </form>
 
-                <!-- FOOTER -->
-                <div class="text-center small text-muted mt-2">
-                    ¿Ya tienes cuenta?
+                <div class="text-center small text-muted mt-3">
+                    ¿Ya tienes una cuenta?  
                     <a asp-page="/Auth/Login" class="edulink-link-primary text-decoration-none">
                         Iniciar sesión
                     </a>
@@ -173,5 +113,23 @@
     </div>
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script para ocultar/mostrar BIO -->
+    <script>
+        const tipoUsuario = document.getElementById("TipoUsuario");
+        const bioContainer = document.getElementById("bioContainer");
+
+        function actualizarBio() {
+            if (tipoUsuario.value === "Proveedor") {
+                bioContainer.style.display = "block";
+            } else {
+                bioContainer.style.display = "none";
+                document.getElementById("Bio").value = "";
+            }
+        }
+
+        tipoUsuario.addEventListener("change", actualizarBio);
+    </script>
+
 </body>
 </html>
