@@ -21,7 +21,7 @@ public class ReservarServicioUseCase
         _reservaRepo = reservaRepo;
     }
 
-    public async Task EjecutarAsync(ReservarServicioRequest request)
+    public async Task<Guid> EjecutarAsync(ReservarServicioRequest request)
     {
         var cliente = await _clienteRepo.ObtenerPorIdAsync(request.ClienteId);
         if (cliente == null)
@@ -40,6 +40,7 @@ public class ReservarServicioUseCase
         var ultimaReserva = cliente.Historial.Last();
         await _reservaRepo.GuardarAsync(ultimaReserva);
 
+        return ultimaReserva.Id;
         // ya no va aki el observe r r r
     }
 }

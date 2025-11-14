@@ -34,21 +34,28 @@ public class AppDbContext : DbContext
             .HasValue<Cliente>("Cliente")
             .HasValue<Proveedor>("Proveedor");
 
+        modelBuilder.Entity<Cliente>(cb =>
+        {
+            cb.Ignore(c => c.MetodosPagoTokenizados);
+        });
+
         modelBuilder.Entity<Reserva>(rb =>
         {
             rb.OwnsOne(r => r.PoliticaCancelacion, pc =>
             {
                 pc.Property(p => p.PlazoMaximoCancelacionHoras)
-                  .HasColumnName("PlazoMaximoCancelacionHoras");
+                .HasColumnName("PlazoMaximoCancelacionHoras");
                 pc.Property(p => p.PorcentajeCargo)
-                  .HasColumnName("PorcentajeCargo");
+                .HasColumnName("PorcentajeCargo")
+                .HasPrecision(5, 4);
             });
 
-            rb.Property(r => r.Estado)
-              .HasConversion(
-                  v => EstadoToString(v),
-                  v => StringToEstadoReserva(v))
-              .Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
+            rb.Ignore(r => r.Estado);
+            // rb.Property(r => r.Estado)
+            //   .HasConversion(
+            //       v => EstadoToString(v),
+            //       v => StringToEstadoReserva(v))
+            //   .Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
 
             rb.HasOne(r => r.Cliente)
               .WithMany(c => c.Historial)
@@ -59,23 +66,35 @@ public class AppDbContext : DbContext
               .WithMany()
               .HasForeignKey("SlotId")
               .OnDelete(DeleteBehavior.Restrict);
+
+            rb.HasOne(r => r.PagoAsociado)
+              .WithOne(p => p.Reserva)
+              .HasForeignKey<Pago>(p => p.ReservaId)
+              .OnDelete(DeleteBehavior.Cascade);
+              
         });
 
         modelBuilder.Entity<SlotHorario>(sb =>
         {
-            sb.Property(s => s.Estado)
-              .HasConversion(
-                  v => EstadoSlotToString(v),
-                  v => StringToEstadoSlot(v))
-              .Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
+            // sb.Property(s => s.Estado)
+            //   .HasConversion(
+            //       v => EstadoSlotToString(v),
+            //       v => StringToEstadoSlot(v))
+            //   .Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
+            sb.Ignore(s => s.Estado);
         });
 
         modelBuilder.Entity<Servicio>(sb =>
         {
-            sb.Property(s => s.EstrategiaPrecio)
-              .HasConversion(
-                  v => PrecioStrategyToString(v),
-                  v => StringToPrecioStrategy(v));
+            sb.Ignore(s => s.EstrategiaPrecio);
+            sb.Property(s => s.PrecioBase)
+            .HasPrecision(18, 2); // 18 dígitos totales, 2 decimales
+
+            // sb.Property(s => s.EstrategiaPrecio)
+            // .HasConversion(
+            //     v => PrecioStrategyToString(v),
+            //     v => StringToPrecioStrategy(v));
+
         });
 
         modelBuilder.Entity<Pago>(pb =>

@@ -1,0 +1,10 @@
+@page
+@model EduLink.Web.Pages.TestFlujoCompletoModel
+@{
+    ViewData["Title"] = "Prueba de Flujo Completo";
+}
+
+<h2>Prueba: Reservar, Pagar, Notificar</h2>
+<p>@Model.Mensaje</p>
+<a class="btn btn-primary" asp-page-handler="Probar">Ejecutar prueba de flujo</a>
+<a href="/">Volver al inicio</a>

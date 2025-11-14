@@ -7,7 +7,22 @@ namespace EduLink.Domain.Entities;
 
 public class Pago
 {
+    protected Pago()
+    {
+        Reserva = null!;
+        MetodoPago = null!;
+    } //No debería haber problema porque no lo usamos, es para EF
+
+    public Pago(Reserva reserva, IPagoStrategy metodoPago, decimal montoTotal)
+    {
+        Reserva = reserva;
+        MetodoPago = metodoPago;
+        MontoTotal = montoTotal;
+        Estado = "Pendiente";
+    }
+
     public Guid Id { get; init; } = Guid.NewGuid();
+    public Guid ReservaId { get; set; }
     public Reserva Reserva { get; init; }
     public IPagoStrategy MetodoPago { get; set; } // fuera enums buu
     //public IPrecioStrategy PoliticaPrecio { get; set; }
@@ -15,13 +30,6 @@ public class Pago
     //public decimal PrecioBase { get; set; }
 
     public decimal MontoTotal { get; }
-
-    public Pago(Reserva reserva, IPagoStrategy metodoPago, decimal montoTotal)
-    {
-        Reserva = reserva;
-        MetodoPago = metodoPago;
-        MontoTotal = montoTotal;
-    }
 
     public async Task AprobarAsync()
     {
