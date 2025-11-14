@@ -1,0 +1,155 @@
+@page
+@{
+  
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EduLink – Explorar servicios</title>
+
+    <!-- Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Bootstrap 5 -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Estilos propios de Explorar -->
+    <link rel="stylesheet" href="~/css/explorar.css" asp-append-version="true" />
+</head>
+<body class="explorar-body">
+
+    <div class="page-wrapper min-vh-100 d-flex flex-column">
+        <!-- HEADER -->
+        <header class="explorar-header border-bottom">
+            <div class="container d-flex align-items-center justify-content-between py-3">
+                <div class="d-flex align-items-center gap-2">
+                    <div class="logo-circle d-flex align-items-center justify-content-center">
+                        <span class="logo-icon">💡</span>
+                    </div>
+                    <div class="brand-text">
+                        <span class="brand-main">Edu</span><span class="brand-highlight">Link</span>
+                    </div>
+                </div>
+
+                <nav class="d-flex gap-3 nav-links">
+                    <a href="#" class="nav-link active">Explorar</a>
+                    <a href="#" class="nav-link">Historial</a>
+                    <a href="#" class="nav-link">Mi panel</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- CONTENIDO -->
+        <main class="flex-grow-1 py-4">
+            <div class="container">
+                <!-- Encabezado -->
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+                    <div>
+                        <h1 class="h4 fw-semibold mb-1">Explorar servicios</h1>
+                        <p class="text-muted mb-0">
+                            Encuentra clases, talleres y consultorías según tu necesidad.
+                        </p>
+                    </div>
+
+                    <!-- Filtros -->
+                    <div class="filter-bar d-flex flex-wrap gap-2">
+                        <button type="button" class="btn btn-filter">
+                            Precio
+                        </button>
+                        <button type="button" class="btn btn-filter">
+                            Modalidad
+                        </button>
+                        <button type="button" class="btn btn-filter">
+                            Fecha
+                        </button>
+                        <button type="button" class="btn btn-filter-accent">
+                            Recomendados
+                        </button>
+                        <button type="button" class="btn btn-filter-primary">
+                            Disponibles ahora
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tarjetas de servicios -->
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <article class="card service-card h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="badge tag-accent">Nuevo</span>
+                                    <span class="badge tag-modality">Online</span>
+                                </div>
+                                <h2 class="h6 fw-semibold mb-1">
+                                    HTTP vs JSON para principiantes
+                                </h2>
+                                <p class="text-muted small mb-2">
+                                    Sesión práctica para entender cómo se comunican las APIs.
+                                </p>
+                                <p class="price mb-1">$14,99</p>
+                                <p class="text-muted small mb-3">Duración: 1h · Nivel: Básico</p>
+                                <button type="button" class="btn btn-primary w-100">
+                                    Reservar clase
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-4">
+                        <article class="card service-card h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="badge tag-accent">Popular</span>
+                                    <span class="badge tag-modality">Presencial</span>
+                                </div>
+                                <h2 class="h6 fw-semibold mb-1">
+                                    Introducción a APIs REST
+                                </h2>
+                                <p class="text-muted small mb-2">
+                                    Diseña y consume servicios REST orientados a proyectos reales.
+                                </p>
+                                <p class="price mb-1">$19,99</p>
+                                <p class="text-muted small mb-3">Duración: 2h · Nivel: Intermedio</p>
+                                <button type="button" class="btn btn-primary w-100">
+                                    Reservar clase
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-4">
+                        <article class="card service-card h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="badge tag-accent">Para back-end</span>
+                                    <span class="badge tag-modality">Online</span>
+                                </div>
+                                <h2 class="h6 fw-semibold mb-1">
+                                    Fundamentos de redes para desarrolladores
+                                </h2>
+                                <p class="text-muted small mb-2">
+                                    IP, puertos y protocolos esenciales para desplegar tus apps.
+                                </p>
+                                <p class="price mb-1">$12,99</p>
+                                <p class="text-muted small mb-3">Duración: 1.5h · Nivel: Básico</p>
+                                <button type="button" class="btn btn-primary w-100">
+                                    Reservar clase
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
