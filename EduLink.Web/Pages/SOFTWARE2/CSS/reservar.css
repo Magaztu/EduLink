@@ -1,0 +1,117 @@
+body {
+    background: #f4eefb;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    padding: 10px 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.search-bar {
+    display: flex;
+    width: 35%;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px 0 0 20px;
+    border: 1px solid #ccc;
+}
+
+.search-bar button {
+    border-radius: 0 20px 20px 0;
+    border: 1px solid #ccc;
+    background: #ddd;
+    padding: 0 15px;
+}
+
+.container {
+    width: 80%;
+    margin: 30px auto;
+}
+
+.contenido {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.left-panel, .right-panel {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    width: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.img-placeholder {
+    height: 120px;
+    background: #ccc;
+    border-radius: 10px;
+}
+
+.date-box {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.right-panel {
+    height: fit-content;
+}
+
+.precio {
+    color: #007bff;
+    font-size: 18px;
+}
+
+.confirmar {
+    width: 100%;
+    padding: 12px;
+    background: #3da1ff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    margin-top: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+/* Ajustar tamaño del logo */
+.top-nav .logo img {
+    width: 40px;
+    height: 40px;
+}
+
+.top-nav .logo span {
+    font-size: 20px;
+}
+
+/* Ajustar tamaño del buscador */
+.search-bar {
+    display: flex;
+    width: 300px;   /* antes era 35% */
+}
+
+.search-bar input {
+    padding: 7px 12px;
+    font-size: 14px;
+}
+
+.search-bar button {
+    padding: 0 12px;
+    font-size: 14px;
+}

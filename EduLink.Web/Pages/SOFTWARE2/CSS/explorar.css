@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f4ff;
+}
+
+.navbar {
+    background: #fff;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: solid 1px #ddd;
+}
+
+.logo {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.logo h2 span {
+    color: #5b59ff;
+}
+
+.search-box {
+    display: flex;
+    gap: 5px;
+}
+
+.search-box input {
+    padding: 10px;
+    width: 280px;
+    border-radius: 6px;
+    border: solid 1px #aaa;
+}
+
+.search-box button {
+    padding: 10px 15px;
+    border: none;
+    background: #5b59ff;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.top-buttons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.btn-historial {
+    padding: 8px 15px;
+    background: #5b59ff;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.user-icon {
+    background: #ffd65b;
+    color: #333;
+    padding: 10px 13px;
+    border-radius: 50%;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container {
+    padding: 20px 50px;
+}
+
+h1 {
+    color: #333;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.filters button {
+    border: solid 1px #aaa;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #fff;
+}
+
+.filters .active {
+    background: #5b59ff;
+    color: white;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    border: solid 1px #ddd;
+}
+
+.img-placeholder {
+    background: #d9d9d9;
+    height: 120px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.card .btn {
+    display: inline-block;
+    margin-top: 10px;
+    background: #f9b300;
+    padding: 10px 15px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}

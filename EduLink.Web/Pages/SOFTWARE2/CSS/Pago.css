@@ -1,0 +1,70 @@
+body { font-family: 'Segoe UI', Arial, sans-serif; background:#f5f5f5; margin:0; padding:30px; display:flex; justify-content:center; }
+.container { display:flex; flex-wrap:wrap; gap:20px; }
+.pago, .resumen { background:#fff; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1); padding:25px; width:380px; }
+h2 { color:#333; margin-top:0; text-align:center; }
+.error{ background:#ffdede; color:#900; padding:10px; border-radius:6px; margin-bottom:10px; }
+.success{ background:#e4ffe6; color:#086; padding:10px; border-radius:6px; margin-bottom:10px; }
+.small{ font-size:13px; color:#666; }
+
+/* --- Nuevo estilo de selección de pago --- */
+.payment-box {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+.payment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 14px 16px;
+}
+.payment-header h3 {
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+}
+.payment-header a {
+  font-size: 13px;
+  text-decoration: none;
+  color: #0070f3;
+}
+.payment-header a:hover { text-decoration: underline; }
+.payment-method {
+  border-bottom: 1px solid #eee;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.payment-method:last-child { border-bottom: none; }
+.payment-method label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #333;
+}
+.payment-method input[type="radio"] {
+  accent-color: #0070f3;
+  width: 18px;
+  height: 18px;
+}
+.payment-logos img { height: 20px; margin-left: 4px; }
+.payment-info {
+  padding: 8px 16px 12px 44px;
+  font-size: 14px;
+  color: #555;
+  background: #f9f9f9;
+  border-left: 3px solid #0070f3;
+  display:none;
+}
+
+/* Inputs tarjeta */
+label { display:block; margin-top:10px; font-weight:bold; }
+input[type="text"] { width:100%; padding:8px; border:1px solid #ccc; border-radius:5px; margin-top:3px; }
+button { width:100%; padding:12px; background:#0070f3; color:#fff; border:none; border-radius:6px; font-size:16px; cursor:pointer; margin-top:15px; }
+button:hover { background:#005ecc; }
