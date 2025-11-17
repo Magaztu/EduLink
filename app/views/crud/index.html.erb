@@ -1,0 +1,31 @@
+<div data-controller="crud">
+  <h1>CRUD Example</h1>
+
+  <!-- Form for creating and updating records -->
+  <form data-action="submit->crud#save">
+    <input type="hidden" data-crud-target="id">
+    <input type="text" data-crud-target="name" placeholder="Name">
+    <button type="submit">Save</button>
+  </form>
+
+  <!-- Table to display records -->
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody data-crud-target="records">
+      <% @records.each do |record| %>
+        <tr>
+          <td><%= record.name %></td>
+          <td>
+            <button data-action="click->crud#edit" data-id="<%= record.id %>" data-name="<%= record.name %>">Edit</button>
+            <button data-action="click->crud#destroy" data-id="<%= record.id %>">Delete</button>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
