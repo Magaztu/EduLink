@@ -1,15 +1,37 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root "static_pages#home"
+  get 'privacy', to: 'static_pages#privacy'
+  
+  get 'login', to: 'auth#login'
+  post 'login', to: 'auth#create_session'
+  get 'register', to: 'auth#register'
+  post 'register', to: 'auth#create_user'
+  delete 'logout', to: 'auth#destroy_session'
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  resource :password_reset, only: [:new, :create, :edit, :update] do
+    collection do
+      get 'verify'
+      post 'check_verification'
+    end
+  end
+
+  resources :servicios do
+    resources :slot_horarios, only: [:create]
+  end
+  
+  resources :slot_horarios, only: [:destroy] do
+    resources :reservas, only: [:new, :create]
+  end
+  
+  get 'historial', to: 'historial#index'
+  
+  resources :reservas, only: [] do
+    resources :pagos, only: [:new, :create]
+    resource :cancelacion, only: [:create], controller: 'cancelaciones'
+  end
+
+  # Admin Route
+  get 'admin', to: 'admin#index'
+
   get "up" => "rails/health#show", as: :rails_health_check
-
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-
-  # Defines the root path route ("/")
-  root "crud#index"
-  resources :crud, only: [:index, :create, :update, :destroy]
 end
