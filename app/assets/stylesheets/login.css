@@ -1,0 +1,38 @@
+/* LOGIN PAGE - ESTILOS AISLADOS */
+
+/* Fondo general */
+body.login-page {
+    background-color: #f9fafb;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Tarjeta del login */
+.login-card {
+    max-width: 420px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px;
+    margin: auto;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.08);
+}
+
+/* Inputs */
+.login-card .form-control {
+    border-radius: 12px;
+    padding: 12px 16px;
+    border: 1px solid #e5e7eb;
+}
+
+/* Botón con degradado */
+.btn-login {
+    background: linear-gradient(90deg, #FBBF24, #3B82F6);
+    border-radius: 50px;
+    color: white;
+    font-weight: 600;
+    padding: 12px;
+}
+
+/* Texto suave */
+.text-soft {
+    color: #6B7280;
+}
