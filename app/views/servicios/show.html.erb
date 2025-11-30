@@ -1,0 +1,5 @@
+<% if @is_provider %>
+  <%= render 'provider_view', servicio: @servicio, slots: @slots %>
+<% else %>
+  <%= render 'client_view', servicio: @servicio, slots: @slots %>
+<% end %>

@@ -1,0 +1,38 @@
+<% content_for :title, "EduLink – Conecta tu aprendizaje" %>
+
+<header class="py-5 edulink-hero text-center">
+  <div class="container">
+    <h1 class="fw-bold mb-2">Conecta tu aprendizaje</h1>
+    <p class="text-muted mb-4 mx-auto" style="max-width: 600px;">
+      Encuentra clases, talleres y consultorías con profesionales certificados. Horarios flexibles, reservas seguras y pagos simples.
+    </p>
+    <%= link_to "Explorar servicios", servicios_path, class: "btn btn-warning btn-lg" %>
+  </div>
+</header>
+
+<div class="container px-4 py-5" id="featured-3">
+  <h2 class="pb-2 border-bottom text-center">¿Cómo funciona?</h2>
+  <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <div class="feature col text-center">
+      <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3 mb-3 p-3">
+        <span>🔍</span>
+      </div>
+      <h3 class="fs-5 fw-semibold">1. Explora</h3>
+      <p>Busca entre cientos de servicios educativos y encuentra el que mejor se adapte a tus necesidades.</p>
+    </div>
+    <div class="feature col text-center">
+      <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3 mb-3 p-3">
+        <span>📅</span>
+      </div>
+      <h3 class="fs-5 fw-semibold">2. Reserva</h3>
+      <p>Selecciona un horario disponible que se ajuste a tu agenda y confirma tu reserva en segundos.</p>
+    </div>
+    <div class="feature col text-center">
+      <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3 mb-3 p-3">
+        <span>🎓</span>
+      </div>
+      <h3 class="fs-5 fw-semibold">3. Aprende</h3>
+      <p>Asiste a tu clase, taller o consultoría y lleva tus conocimientos al siguiente nivel.</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<% if @is_provider %>
+  <%# --- VISTA PARA PROVEEDORES --- %>
+  <% content_for :title, "Mis Servicios Publicados" %>
+  <div class="container py-5" style="max-width: 960px;">
+    <h1 class="fw-bold mb-4">Mis Servicios Publicados</h1>
+
+    <% if @servicios.any? %>
+      <div class="list-group">
+        <% @servicios.each do |servicio| %>
+          <a href="<%= servicio_path(servicio) %>" class="list-group-item list-group-item-action flex-column align-items-start mb-3 border rounded-3 shadow-sm">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1 fw-semibold"><%= servicio.titulo %></h5>
+              <small class="text-muted">Publicado hace <%= time_ago_in_words(servicio.created_at) %></small>
+            </div>
+            <p class="mb-1 text-muted small"><%= truncate(servicio.descripcion, length: 150) %></p>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <div>
+                <span class="badge bg-info"><%= servicio.modalidad %></span>
+                <span class="fw-bold text-primary ms-2"><%= number_to_currency(servicio.precio_base) %></span>
+              </div>
+              <span class="btn btn-sm btn-outline-primary">Gestionar</span>
+            </div>
+          </a>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="text-center p-5 border rounded-3">
+        <p class="lead">Aún no has publicado ningún servicio.</p>
+        <%= link_to "Publicar mi primer servicio", new_servicio_path, class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+
+<% else %>
+  <%# --- VISTA PARA CLIENTES (EXISTENTE) --- %>
+  <% content_for :title, "Mi Historial de Reservas" %>
+  <div class="container py-5" style="max-width: 960px;">
+    <h1 class="fw-bold mb-4">Mi Historial de Reservas</h1>
+
+    <% if @reservas.any? %>
+      <div class="list-group">
+        <% @reservas.each do |reserva| %>
+          <div class="list-group-item list-group-item-action flex-column align-items-start mb-3 border rounded-3 shadow-sm">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1 fw-semibold"><%= reserva.slot_horario.service.titulo %></h5>
+              <small class="text-muted">hace <%= time_ago_in_words(reserva.created_at) %></small>
+            </div>
+            <p class="mb-1">
+              Reservado para: <%= l(reserva.slot_horario.inicio, format: :long) %>
+            </p>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <div>
+                <span class="badge rounded-pill text-bg-<%= reserva.estado == 'Confirmada' ? 'success' : 'secondary' %>">
+                  <%= reserva.estado %>
+                </span>
+                <span class="fw-bold text-primary ms-2">
+                  <%= number_to_currency(reserva.slot_horario.service.precio_base) %>
+                </span>
+              </div>
+              
+              <% if reserva.estado == 'Confirmada' && reserva.slot_horario.inicio > Time.current %>
+                <%= button_to "Cancelar Reserva", reserva_cancelacion_path(reserva), method: :post, 
+                    class: "btn btn-danger btn-sm", 
+                    form: { data: { turbo: false, turbo_confirm: '¿Estás seguro? Se podrían aplicar cargos por cancelación.' } } %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="text-center p-5 border rounded-3">
+        <p class="lead">Aún no tienes reservas en tu historial.</p>
+        <%= link_to "Explorar servicios", servicios_path, class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
