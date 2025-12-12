@@ -1,0 +1,96 @@
+<% content_for :title, "EduLink – Crear cuenta" %>
+
+<div class="edulink-auth-wrapper d-flex align-items-center justify-content-center min-vh-100">
+  <div class="card edulink-auth-card">
+    <div class="card-body p-4 p-md-5">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="d-flex align-items-center gap-2">
+          <div class="edulink-logo-circle"><span>💡</span></div>
+          <div class="edulink-brand">
+            <span class="edulink-brand-main">Edu</span><span class="edulink-brand-highlight">Link</span>
+          </div>
+        </div>
+        <span class="px-3 py-1 edulink-badge">Crea tu cuenta</span>
+      </div>
+
+      <h1 class="h4 fw-semibold mb-3">Crear cuenta</h1>
+      <p class="text-muted small mb-4">Completa tu información para comenzar a usar la plataforma.</p>
+
+      <%# FIX: Use string "false" for turbo data attribute %>
+      <%= form_with(model: @user || User.new, url: register_path, method: :post, local: true, scope: :user, data: { turbo: "false" }) do |form| %>
+        <%# FIX: Display validation errors on re-render %>
+        <% if form.object.errors.any? || flash.now[:alert] %>
+          <div class="alert alert-danger">
+            <% if flash.now[:alert] %>
+              <p class="mb-1"><%= flash.now[:alert] %></p>
+            <% end %>
+            <% if form.object.errors.any? %>
+              <ul class="mb-0 ps-3">
+                <% form.object.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
+        <% end %>
+
+        <div class="mb-3">
+          <%= form.label :nombre, "Nombre completo", class: "form-label fw-semibold" %>
+          <%= form.text_field :nombre, class: "form-control", placeholder: "Tu nombre y apellidos", required: true %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :email, "Correo electrónico", class: "form-label fw-semibold" %>
+          <%= form.email_field :email, class: "form-control", placeholder: "tucorreo@ejemplo.com", required: true %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :type, "Tipo de usuario", class: "form-label fw-semibold" %>
+          <%= form.select :type, [["Cliente", "Client"], ["Proveedor", "Provider"]], { prompt: "Selecciona una opción" }, { class: "form-select", id: "user_type", required: true } %>
+        </div>
+
+        <div class="mb-3" id="bioContainer" style="display:none;">
+          <%= form.label :bio, "Biografía / Descripción", class: "form-label fw-semibold" %>
+          <%= form.text_area :bio, class: "form-control", rows: 3, placeholder: "Describe tus servicios, experiencia o especialización…" %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :password, "Contraseña", class: "form-label fw-semibold" %>
+          <%= form.password_field :password, class: "form-control", placeholder: "Mínimo 6 caracteres", required: true %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :password_confirmation, "Confirmar contraseña", class: "form-label fw-semibold" %>
+          <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Repite tu contraseña", required: true %>
+        </div>
+
+        <%= form.submit "Crear cuenta", class: "btn btn-primary w-100 mt-3" %>
+      <% end %>
+
+      <div class="text-center small text-muted mt-3">
+        ¿Ya tienes una cuenta?
+        <%= link_to "Iniciar sesión", login_path, class: "edulink-link-primary text-decoration-none" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+  (function() {
+    const tipoUsuario = document.getElementById("user_type");
+    const bioContainer = document.getElementById("bioContainer");
+
+    if (!tipoUsuario || !bioContainer) return;
+
+    function actualizarBio() {
+      if (tipoUsuario.value === "Provider") {
+        bioContainer.style.display = "block";
+      } else {
+        bioContainer.style.display = "none";
+      }
+    }
+    tipoUsuario.addEventListener("change", actualizarBio);
+    actualizarBio();
+  })();
+</script>
