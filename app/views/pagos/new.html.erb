@@ -1,0 +1,165 @@
+<% content_for :title, "Completar Pago" %>
+
+<div class="container py-5" style="max-width: 1100px;">
+  <h1 class="fw-bold mb-2 text-center">Completar pago</h1>
+  <p class="text-muted text-center mb-4">
+    Revisa los detalles y completa tu información de pago.
+  </p>
+
+  <div class="row g-4">
+    <%# Payment Form Column %>
+    <div class="col-lg-7">
+      <div class="card shadow-sm p-4">
+        
+        <% if flash[:alert] %>
+          <div class="alert alert-danger"><%= flash[:alert] %></div>
+        <% end %>
+
+        <%= form_with(url: reserva_pagos_path(@reserva.id), method: :post, id: "payment-form", data: { turbo: false }) do |form| %>
+          
+          <div class="mb-4">
+            <label class="form-label fw-semibold">Método de Pago</label>
+            <%= form.select :metodo_pago, 
+                @payment_strategies.map { |s| [s.nombre, s.class.name] }, 
+                {}, 
+                { class: "form-select", id: "payment-method-select" } %>
+          </div>
+
+          <%# --- TARJETA FORM --- %>
+          <div id="strategy-Strategies::TarjetaPagoStrategy" class="payment-strategy-form">
+            <h4 class="fw-semibold mb-3">Datos de Tarjeta</h4>
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Nombre en tarjeta</label>
+              <input type="text" class="form-control" placeholder="Como aparece en la tarjeta" required />
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Número de tarjeta</label>
+              <input type="text" class="form-control mask-card" placeholder="0000 0000 0000 0000" maxlength="19" required />
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">Expiración</label>
+                <input type="text" class="form-control mask-expiry" placeholder="MM/AA" maxlength="5" required />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">CVV</label>
+                <input type="text" class="form-control mask-cvv" placeholder="123" maxlength="4" required />
+              </div>
+            </div>
+          </div>
+
+          <%# --- TRANSFERENCIA FORM --- %>
+          <div id="strategy-Strategies::TransferenciaPagoStrategy" class="payment-strategy-form" style="display:none;">
+            <h4 class="fw-semibold mb-3">Datos de Transferencia</h4>
+            <div class="alert alert-info">
+              <p class="mb-0">Por favor, realiza la transferencia a la siguiente cuenta:</p>
+              <p class="mb-0 fw-bold">Banco Pichincha: 1234567890</p>
+              <p class="mb-0">A nombre de: EduLink S.A.</p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Número de Comprobante</label>
+              <input type="text" class="form-control mask-number" placeholder="Ingresa el número de referencia" required />
+            </div>
+          </div>
+
+          <%# --- EFECTIVO FORM --- %>
+          <div id="strategy-Strategies::PagarEnSitioStrategy" class="payment-strategy-form" style="display:none;">
+            <h4 class="fw-semibold mb-3">Pago en Efectivo</h4>
+            <div class="alert alert-warning">
+              <p class="mb-0">El pago se realizará directamente en el sitio antes de la clase.</p>
+              <p class="mb-0">Por favor, lleva el monto exacto si es posible.</p>
+            </div>
+          </div>
+
+          <%= form.submit "Confirmar pago de #{number_to_currency(@reserva.servicio.calcular_precio_final(@reserva.cliente))}", class: "btn btn-primary w-100 py-2 mt-2" %>
+        <% end %>
+      </div>
+    </div>
+
+    <%# Summary Column %>
+    <div class="col-lg-5">
+      <div class="card shadow-sm p-4" style="background:#F9FAFB;">
+        <h5 class="fw-bold mb-3">Resumen de la reserva</h5>
+        <% servicio = @reserva.servicio %>
+        <% final_price = servicio.calcular_precio_final(@reserva.cliente) %>
+
+        <div class="mb-2 d-flex justify-content-between">
+          <span class="text-muted">Servicio:</span>
+          <span class="fw-semibold"><%= servicio.titulo %></span>
+        </div>
+
+        <div class="mb-2 d-flex justify-content-between">
+          <span class="text-muted">Duración:</span>
+          <span class="fw-semibold"><%= servicio.duracion_minutos %> minutos</span>
+        </div>
+
+        <div class="mb-2 d-flex justify-content-between">
+          <span class="text-muted">Modalidad:</span>
+          <span class="fw-semibold"><%= servicio.modalidad %></span>
+        </div>
+        
+        <div class="mb-2 d-flex justify-content-between">
+          <span class="text-muted">Horario:</span>
+          <span class="fw-semibold"><%= l(@reserva.slot.inicio, format: :long) %></span>
+        </div>
+
+        <div class="border-top pt-3 mt-2 d-flex justify-content-between">
+          <span class="fw-semibold">Total:</span>
+          <span class="fw-bold text-primary"><%= number_to_currency(final_price) %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+  (function() {
+    const select = document.getElementById('payment-method-select');
+
+    if (!select) return;
+
+    const forms = document.querySelectorAll('.payment-strategy-form');
+
+    function updateForm() {
+      const selectedStrategy = select.value;
+      forms.forEach(form => {
+        if (form.id === `strategy-${selectedStrategy}`) {
+          form.style.display = 'block';
+          form.querySelectorAll('input').forEach(input => input.disabled = false);
+        } else {
+          form.style.display = 'none';
+          form.querySelectorAll('input').forEach(input => input.disabled = true);
+        }
+      });
+    }
+
+    select.addEventListener('change', updateForm);
+    updateForm();
+
+    // Máscaras de los inputs
+    document.querySelectorAll('.mask-number, .mask-cvv').forEach(input => {
+      input.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/\D/g, '');
+      });
+    });
+
+    document.querySelectorAll('.mask-card').forEach(input => {
+      input.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        value = value.replace(/(.{4})/g, '$1 ').trim();
+        e.target.value = value;
+      });
+    });
+
+    document.querySelectorAll('.mask-expiry').forEach(input => {
+      input.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length >= 2) {
+          value = value.substring(0, 2) + '/' + value.substring(2, 4);
+        }
+        e.target.value = value;
+      });
+    });
+  })();
+</script>
