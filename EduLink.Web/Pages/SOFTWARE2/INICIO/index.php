@@ -32,10 +32,11 @@
         <h1>Aprende nuevas habilidades <br> desde cualquier lugar</h1>
         <p>Accede a miles de cursos online y mejora tu futuro profesional</p>
 
-        <div class="search-box">
-            <input type="text" placeholder="¿Qué quieres aprender hoy?">
-            <button>Buscar</button>
-        </div>
+        <form class="search-box" action="/SOFTWARE2/cursos.php" method="GET">
+    <input type="text" name="buscar" placeholder="¿Qué quieres aprender hoy?" required>
+    <button type="submit">Buscar</button>
+</form>
+
     </div>
 </section>
 
@@ -111,3 +112,4 @@
 
 </body>
 </html>
+
