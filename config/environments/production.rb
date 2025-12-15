@@ -60,10 +60,10 @@ Rails.application.configure do
   config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
 
   # Use a different cache store in production.
-  # config.cache_store = :mem_cache_store
+  # FIX: Use memory_store to avoid solid_cache database requirement
+  config.cache_store = :memory_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  # FIX: Use async adapter to avoid solid_queue database requirement
   config.active_job.queue_adapter = :async
   # config.active_job.queue_name_prefix = "limones_production"
 
