@@ -1,0 +1,175 @@
+@page
+@{
+      Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EduLink – Explorar servicios</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    
+    <link rel="stylesheet" href="~/css/edulink-theme.css" asp-append-version="true" />
+</head>
+
+<body class="edulink-body-page">
+
+
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm py-2">
+        <div class="container">
+
+            <a class="navbar-brand d-flex align-items-center gap-2" asp-page="/Index">
+                <img src="~/imagenes/logo.jpg" width="36" height="36" />
+                <span class="fw-semibold fs-5">
+                    <span class="edulink-brand-main">Edu</span><span class="edulink-brand-highlight">Link</span>
+                </span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarPublic">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarPublic">
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="/Index">Inicio</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" asp-page="/Explorar/Index">Explorar</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="/Contacto">Contacto</a>
+                    </li>
+
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-primary px-3 py-1 rounded-pill" asp-page="/Auth/Login">
+                            Iniciar sesión
+                        </a>
+                    </li>
+
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-warning px-3 py-1 rounded-pill" asp-page="/Auth/Register">
+                            Registrarse
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <header class="py-5 edulink-hero">
+        <div class="container text-center">
+            <h1 class="fw-bold mb-2">Explorar clases y servicios</h1>
+            <p class="text-muted mb-4">
+                Encuentra talleres, cursos y servicios educativos personalizados.
+            </p>
+
+
+            <div class="d-flex justify-content-center">
+                <div class="input-group input-group-lg edulink-searchbar w-75">
+                    <input type="text" class="form-control" placeholder="Buscar clase, taller o instructor…" />
+                    <button class="btn btn-primary">
+                        Buscar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <main class="container py-5">
+
+        <h2 class="fw-semibold mb-4">Resultados populares</h2>
+
+        <div class="row g-4">
+
+    
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card edulink-service-card h-100 shadow-sm">
+                    <img src="~/imagenes/tutomat.jpeg" class="card-img-top" alt="Imagen servicio">
+
+                    <div class="card-body">
+                        <span class="badge bg-warning text-dark mb-2">Popular</span>
+
+                        <h5 class="card-title fw-semibold">Tutoría de Matemáticas</h5>
+                        <p class="card-text text-muted small">
+                            Refuerzo académico y preparación para exámenes.
+                        </p>
+
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="fw-bold text-primary">$12 / hora</span>
+                            <a class="btn btn-primary btn-sm" asp-page="/Reservar/Index">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card edulink-service-card h-100 shadow-sm">
+                    <img src="~/imagenes/ingcon.jpeg" class="card-img-top" alt="Imagen servicio">
+
+                    <div class="card-body">
+                        <span class="badge bg-warning text-dark mb-2">Nuevo</span>
+
+                        <h5 class="card-title fw-semibold">Inglés conversacional</h5>
+                        <p class="card-text text-muted small">
+                            Mejora tu fluidez con clases prácticas en vivo.
+                        </p>
+
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="fw-bold text-primary">$15 / hora</span>
+                            <a class="btn btn-primary btn-sm" asp-page="/Reservar/Index">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card edulink-service-card h-100 shadow-sm">
+                    <img src="~/imagenes/cursoprogweb.jpeg" class="card-img-top" alt="Imagen servicio">
+
+                    <div class="card-body">
+
+                        <span class="badge bg-warning text-dark mb-2">Tendencia</span>
+
+                        <h5 class="card-title fw-semibold">Curso de Programación Web</h5>
+                        <p class="card-text text-muted small">
+                            HTML, CSS, JavaScript y proyectos prácticos.
+                        </p>
+
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="fw-bold text-primary">$20 / hora</span>
+                            <a class="btn btn-primary btn-sm" asp-page="/Reservar/Index">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,24 +1,33 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+`dotnet restore`
 
-Things you may want to cover:
+**ESTO DESCARGA LAS DEPENDENCIAS EN .csproj**
+Funciona similar a npm i en node.js, aunque sé que no han tocado esa herramienta, básicamente las dependencias declaradas en algúna archivo (package.json en el caso de node.js) son chequeadas y si alguna falta, se instala.
 
-* Ruby version
+## Compilar
+Si usan VS Community 2022, usen el boton verde de compilado.
 
-* System dependencies
+Si usan otro IDE o la consola de comando, corran `dotnet run` en /EduLink.Web, esto compila el proyecto.
 
-* Configuration
+![Demostración del compilado](./Resources/Demo-2.gif)
 
-* Database creation
+## Despliegue
+No es el titulo que corresponde a esta parte por ahora.
 
-* Database initialization
+Si desean ver la página web, accedan a `http://localhost:XXXX` desde un navegador luego de compilar y correr el programa.
 
-* How to run the test suite
+Por ahora deberían ver:
+- Home, la página de inicio por ahora.
+- Privacy, autogenerado por ASP.NET, sólo es una plantilla.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Estructura del proyecto
+Los nombres de las capas del proyecto fueron autogeneradas por ASP.NET, pero a continuación se explica sus equivalentes:
+- Application == Business Logic (BL) -> Aquí debe trabajar Xavs
+- Domain == Persistencia de objetos (DBO)
+- Infrastructure == Database Access Layer (DAL)
+- Web == Interfaz de usuario / Páginas Web (UI) -> Aquí debe trabajar Sebas
 
-* Deployment instructions
+En el caso de Gabito, paséate donde quieras. La capa de base de datos la configuramos juntos después.
 
-* ...
+### Nota adicional
+NUNCA hagan stage ni commit durante la ejecución de una build o compilado, se va a dañar la rama y el flujo de trabajo, obligandolos a borrar cosas e incluso prohibiendo borrarlas.

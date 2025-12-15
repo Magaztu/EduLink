@@ -1,0 +1,141 @@
+:root {
+    /* Paleta del documento */
+    --edulink-primary: #3b82f6;   /* azul */
+    --edulink-accent: #fbbf24;    /* amarillo */
+    --edulink-text: #111827;
+    --edulink-muted: #6b7280;
+
+    /* Sobrescribir Bootstrap */
+    --bs-primary: var(--edulink-primary);
+    --bs-body-font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+}
+
+body {
+    font-family: var(--bs-body-font-family);
+    font-size: 16px;
+    color: var(--edulink-text);
+}
+
+/* ====== LOGIN / REGISTER LAYOUT ====== */
+
+.edulink-auth-body {
+    background: radial-gradient(circle at top left, #eff6ff, #fefce8);
+}
+
+.edulink-auth-wrapper {
+    padding: 1.5rem;
+}
+
+.edulink-auth-card {
+    max-width: 430px;
+    border-radius: 1.2rem;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18);
+    background-color: #ffffff;
+}
+
+/* franja superior azul-amarilla */
+.edulink-auth-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--edulink-accent), var(--edulink-primary));
+}
+
+/* Logo + marca */
+.edulink-logo-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    background: radial-gradient(circle at 30% 20%, var(--edulink-accent), #fef9c3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: #b45309;
+}
+
+.edulink-brand {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    font-size: 1.05rem;
+}
+
+.edulink-brand-main {
+    color: var(--edulink-text);
+}
+
+.edulink-brand-highlight {
+    color: var(--edulink-primary);
+}
+
+/* Etiqueta amarilla al lado del logo */
+.edulink-badge {
+    background-color: var(--edulink-accent);
+    color: #92400e;
+    border-radius: 999px;
+    font-size: 0.75rem;
+}
+
+/* Formularios accesibles */
+.edulink-auth-card .form-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.edulink-auth-card .form-control {
+    min-height: 44px;             /* 44x44 accesible */
+    border-radius: 999px;
+    font-size: 0.95rem;
+}
+
+.edulink-auth-card .form-control:focus {
+    box-shadow: 0 0 0 0.14rem rgba(59, 130, 246, 0.35);
+}
+
+/* Botón principal */
+.edulink-auth-card .btn-primary {
+    min-height: 44px;
+    font-weight: 600;
+    border-radius: 999px;
+    box-shadow: 0 12px 30px rgba(59, 130, 246, 0.45);
+}
+
+.edulink-auth-card .btn-primary:focus-visible {
+    outline: 2px solid var(--edulink-accent);
+    outline-offset: 2px;
+}
+
+/* Links */
+.edulink-link-primary {
+    color: var(--edulink-primary);
+}
+
+.edulink-link-primary:hover {
+    color: #2563eb;
+    text-decoration: underline;
+}
+
+.edulink-link-secondary {
+    color: var(--edulink-muted);
+}
+
+.edulink-link-secondary:hover {
+    color: var(--edulink-primary);
+}
+
+/* Recuerdame alineado */
+.edulink-remember-row {
+    font-size: 0.85rem;
+}
+
+/* Resposivo pequeño */
+@media (max-width: 576px) {
+    .edulink-auth-card {
+        border-radius: 1rem;
+    }
+}
