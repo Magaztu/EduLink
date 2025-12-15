@@ -1,0 +1,65 @@
+<% content_for :title, "Sobre Nosotros" %>
+
+<%# --- ESTILOS INTERNOS PARA LA PÁGINA --- %>
+<style>
+    .about {
+        background-color: #ffffff;
+        padding: 70px 20px;
+    }
+    .about-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+    .about-text {
+        flex: 1;
+        min-width: 280px;
+    }
+    .about-text h2 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        color: #3b82f6;
+    }
+    .about-text p {
+        font-size: 16px;
+        line-height: 1.7;
+        color: #444;
+    }
+    .about-image {
+        flex: 1;
+        min-width: 280px;
+        text-align: center;
+    }
+    .about-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+</style>
+
+<section class="about py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-5 fw-bold">Sobre nosotros</h1>
+                <p class="lead text-muted">
+                    Somos un grupo de estudiantes universitarios de la Universidad ECOTEC, 
+                    actualmente cursando el sexto semestre, quienes desarrollaron este proyecto 
+                    como parte de nuestra formación académica.
+                </p>
+                <p class="lead text-muted">
+                    Nuestro objetivo es crear una 
+                    plataforma accesible que facilite la disponibilidad de la educación digital y
+                    potencie el aprendizaje mediante la tecnología.
+                </p>
+            </div>
+            <div class="col-lg-6 text-center">
+                <%# FIX: Corregido el nombre del archivo a 'Dueños.jpg' %>
+                <%= image_tag "Dueños.jpg", class: "img-fluid rounded shadow-lg", alt: "Equipo de desarrollo" %>
+            </div>
+        </div>
+    </div>
+</section>

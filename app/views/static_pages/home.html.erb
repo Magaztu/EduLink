@@ -1,38 +1,118 @@
-<% content_for :title, "EduLink – Conecta tu aprendizaje" %>
+<% content_for :title, "EduLink - Aprende sin límites" %>
 
-<header class="py-5 edulink-hero text-center">
-  <div class="container">
-    <h1 class="fw-bold mb-2">Conecta tu aprendizaje</h1>
-    <p class="text-muted mb-4 mx-auto" style="max-width: 600px;">
-      Encuentra clases, talleres y consultorías con profesionales certificados. Horarios flexibles, reservas seguras y pagos simples.
+<%# --- ESTILOS INTERNOS PARA LA PÁGINA DE INICIO --- %>
+<style>
+    /* FIX: Eliminar el margen inferior del body para esta página */
+    body { margin-bottom: 0 !important; }
+
+    .hero {
+        background: linear-gradient(135deg, #3b82f6, #9333ea);
+        color: white;
+        padding: 80px 20px;
+    }
+    .hero h1 { font-size: 42px; margin-bottom: 15px; }
+    .hero p { font-size: 18px; margin-bottom: 25px; }
+    .search-box input { border: none; outline: none; }
+    .search-box button { background-color: #f59e0b; border: none; font-weight: bold; }
+    .categories { background-color: #f8f9fb; }
+    .categories h2 { font-size: 32px; margin-bottom: 30px; }
+    .categories .card { background-color: white; font-weight: bold; box-shadow: 0 5px 10px rgba(0,0,0,0.05); cursor: pointer; }
+    .courses { background-color: #f1f5f9; }
+    .courses h2 { font-size: 32px; margin-bottom: 30px; }
+    .course-card { background-color: white; text-align: left; box-shadow: 0 5px 10px rgba(0,0,0,0.05); }
+    .course-card h3 { margin-bottom: 10px; }
+    .course-card p { font-size: 14px; margin-bottom: 15px; }
+    .course-card button { background-color: #3b82f6; color: white; border: none; cursor: pointer; }
+    .cta { background: linear-gradient(135deg, #f59e0b, #ef4444); color: white; }
+    .btn-cta { background-color: white; color: #ef4444; text-decoration: none; font-weight: bold; }
+    .home-footer {
+        background-color: #0f172a;
+        color: #d1d5f0;
+        text-align: center;
+        padding: 20px;
+        margin-top: 0; /* Asegurar que no haya margen arriba */
+    }
+    .home-footer a {
+        color: #9ca3af;
+        text-decoration: none;
+    }
+    .home-footer a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<%# --- HERO SECTION --- %>
+<section class="hero text-center py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Aprende nuevas habilidades <br> desde cualquier lugar</h1>
+        <p class="lead">Accede a miles de cursos online y mejora tu futuro profesional</p>
+
+        <%= form_with(url: servicios_path, method: :get, class: "search-box d-flex justify-content-center") do |form| %>
+            <div class="input-group input-group-lg w-75 shadow-sm">
+                <%= form.text_field :query, class: "form-control", placeholder: "¿Qué quieres aprender hoy?", required: true %>
+                <button class="btn btn-warning px-4" type="submit">Buscar</button>
+            </div>
+        <% end %>
+    </div>
+</section>
+
+<%# --- CATEGORIES --- %>
+<section class="categories py-5">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-4">Categorías populares</h2>
+        <div class="row g-3">
+            <% categories = ["💻 Programación", "🎨 Diseño Gráfico", "📈 Marketing Digital", "📚 Desarrollo Personal", "🤖 Inteligencia Artificial", "📱 Desarrollo Móvil"] %>
+            <% categories.each do |category| %>
+                <div class="col-lg-2 col-md-4 col-6">
+                    <div class="card text-center p-3 shadow-sm h-100 justify-content-center"><%= category %></div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</section>
+
+<%# --- FEATURED COURSES --- %>
+<section class="courses py-5">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-4">Cursos destacados</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm course-card p-3">
+                    <h5 class="card-title fw-semibold">Curso de Ruby on Rails</h5>
+                    <p class="card-text">Aprende desarrollo web con Rails paso a paso.</p>
+                    <%= link_to "Ver curso", servicios_path, class: "btn btn-primary" %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm course-card p-3">
+                    <h5 class="card-title fw-semibold">HTML y CSS profesional</h5>
+                    <p class="card-text">Domina el diseño de páginas web modernas.</p>
+                    <%= link_to "Ver curso", servicios_path, class: "btn btn-primary" %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm course-card p-3">
+                    <h5 class="card-title fw-semibold">JavaScript avanzado</h5>
+                    <p class="card-text">Haz páginas interactivas y dinámicas.</p>
+                    <%= link_to "Ver curso", servicios_path, class: "btn btn-primary" %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%# --- FINAL CTA --- %>
+<section class="cta text-center py-5">
+    <div class="container">
+        <h2 class="fw-bold">Empieza hoy tu camino de aprendizaje</h2>
+        <%= link_to "Crear cuenta gratis", register_path, class: "btn btn-light btn-lg mt-3 fw-bold" %>
+    </div>
+</section>
+
+<%# --- FOOTER --- %>
+<footer class="home-footer">
+    <p>
+        Copyright © 2025 EduLink - 
+        <%= link_to "Sobre Nosotros", sobre_nosotros_path %>
     </p>
-    <%= link_to "Explorar servicios", servicios_path, class: "btn btn-warning btn-lg" %>
-  </div>
-</header>
-
-<div class="container px-4 py-5" id="featured-3">
-  <h2 class="pb-2 border-bottom text-center">¿Cómo funciona?</h2>
-  <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-    <div class="feature col text-center">
-      <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3 mb-3 p-3">
-        <span>🔍</span>
-      </div>
-      <h3 class="fs-5 fw-semibold">1. Explora</h3>
-      <p>Busca entre cientos de servicios educativos y encuentra el que mejor se adapte a tus necesidades.</p>
-    </div>
-    <div class="feature col text-center">
-      <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3 mb-3 p-3">
-        <span>📅</span>
-      </div>
-      <h3 class="fs-5 fw-semibold">2. Reserva</h3>
-      <p>Selecciona un horario disponible que se ajuste a tu agenda y confirma tu reserva en segundos.</p>
-    </div>
-    <div class="feature col text-center">
-      <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3 mb-3 p-3">
-        <span>🎓</span>
-      </div>
-      <h3 class="fs-5 fw-semibold">3. Aprende</h3>
-      <p>Asiste a tu clase, taller o consultoría y lleva tus conocimientos al siguiente nivel.</p>
-    </div>
-  </div>
-</div>
+</footer>

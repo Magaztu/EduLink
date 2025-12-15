@@ -1,10 +1,10 @@
 class StaticPagesController < ApplicationController
-
-  layout 'marketing'
-
   def home
   end
 
   def privacy
+  end
+
+  def sobre_nosotros
   end
 end

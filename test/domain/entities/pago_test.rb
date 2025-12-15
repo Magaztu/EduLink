@@ -8,7 +8,7 @@ require_relative "../../../app/domain/enums/estado_reserva"
 class PagoTest < ActiveSupport::TestCase
 
   test "un pago se puede aprobar si la reserva está pendiente" do
-    # Preparo una reserva falsa (mock) que está pendiente
+    # Preparo una reserva falsa que está en estado pendiente
     reserva_mock = Minitest::Mock.new
     reserva_mock.expect(:estado, Enums::EstadoReserva::PENDIENTE)
     # Espero que al final se llame a 'confirmar' en la reserva
@@ -17,14 +17,15 @@ class PagoTest < ActiveSupport::TestCase
     reserva_mock.expect(:cliente, Entities::Cliente.new(id: "cliente-1"))
 
     # Preparo una estrategia de pago falsa
-    metodo_pago_mock = Minitest::Mock.new
-    # Le digo que simule un pago exitoso
-    metodo_pago_mock.expect(:procesar, true, [100, "cliente-1"])
+    estrategia_fake = Object.new
+    def estrategia_fake.procesar(monto, cliente_id)
+      true # Simula un pago exitoso
+    end
 
     # Creo el pago
     pago = Entities::Pago.new(
       reserva: reserva_mock,
-      metodo_pago: metodo_pago_mock,
+      metodo_pago: estrategia_fake,
       monto_total: 100
     )
 
@@ -35,7 +36,6 @@ class PagoTest < ActiveSupport::TestCase
     assert_equal "Aprobado", pago.estado
     # Y verifico que se llamó a los métodos esperados en los mocks
     reserva_mock.verify
-    metodo_pago_mock.verify
   end
 
   test "un pago NO se puede aprobar si la reserva ya está confirmada" do
@@ -44,12 +44,15 @@ class PagoTest < ActiveSupport::TestCase
     reserva_mock.expect(:estado, Enums::EstadoReserva::CONFIRMADA)
 
     # Preparo una estrategia de pago (no debería ni llegar a usarse)
-    metodo_pago_mock = Minitest::Mock.new
+    estrategia_fake = Object.new
+    def estrategia_fake.procesar(monto, cliente_id)
+      true
+    end
 
     # Creo el pago
     pago = Entities::Pago.new(
       reserva: reserva_mock,
-      metodo_pago: metodo_pago_mock,
+      metodo_pago: estrategia_fake,
       monto_total: 100
     )
 

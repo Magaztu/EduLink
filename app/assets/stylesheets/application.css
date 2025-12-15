@@ -1,12 +1,4 @@
-/*
-  PROPSHAFT MANIFEST - VERSIÓN COMPLETA
-  Contiene todos los estilos de todos los archivos CSS y los estilos en línea
-  del proyecto original para asegurar una traducción 100% fiel.
-*/
 
-/* ==================================
-   FROM: edulink-theme.css (Auth Pages)
-   ================================== */
 :root {
     --edulink-primary: #3b82f6;
     --edulink-accent: #fbbf24;
@@ -74,9 +66,6 @@ body {
     box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
 }
 
-/* ==================================
-   FROM: site.css (General Layout)
-   ================================== */
 html { font-size: 14px; }
 @media (min-width: 768px) { html { font-size: 16px; } }
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus { box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb; }

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root "static_pages#home"
   get 'privacy', to: 'static_pages#privacy'
-  
+  get 'sobre-nosotros', to: 'static_pages#sobre_nosotros' # <-- Nueva ruta
+
   get 'login', to: 'auth#login'
   post 'login', to: 'auth#create_session'
   get 'register', to: 'auth#register'
@@ -30,7 +31,6 @@ Rails.application.routes.draw do
     resource :cancelacion, only: [:create], controller: 'cancelaciones'
   end
 
-  # Admin Route
   get 'admin', to: 'admin#index'
 
   get "up" => "rails/health#show", as: :rails_health_check
