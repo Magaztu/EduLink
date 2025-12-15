@@ -1,8 +1,46 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+# Disable documentation requirement
+Style/Documentation:
+  Enabled: false
+
+# Allow long lines (120 chars is standard for modern screens)
+Layout/LineLength:
+  Max: 120
+
+# Disable frozen string literal comment requirement
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Allow simple class/module definitions
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# Disable method length metrics
+Metrics/MethodLength:
+  Enabled: false
+
+# Disable class length metrics
+Metrics/ClassLength:
+  Enabled: false
+
+# Disable block length metrics
+Metrics/BlockLength:
+  Enabled: false
+
+# Allow double quotes for strings
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# Disable trailing comma enforcement
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
