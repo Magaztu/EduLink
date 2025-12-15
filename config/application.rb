@@ -25,9 +25,11 @@ module Limones
     # config.eager_load_paths << Rails.root.join("extras")
 
     # FIX: Disable Action Cable since we are not using it.
-    # This prevents the "cable database not configured" error on deploy.
     config.action_cable.disable_request_forgery_protection = true
     config.action_cable.url = nil
     config.action_cable.mount_path = nil
+
+    # FIX: Force async adapter for Active Job globally to prevent solid_queue errors
+    config.active_job.queue_adapter = :async
   end
 end
