@@ -51,7 +51,8 @@
               <%= link_to "Historial", historial_path, class: "nav-link" %>
             </li>
             
-            <% if current_user.email == "admin@prrones.com" %>
+            <%# FIX: Usar el método centralizado del modelo %>
+            <% if current_user.admin? %>
               <li class="nav-item">
                 <%= link_to "Admin", admin_path, class: "nav-link text-danger fw-bold" %>
               </li>

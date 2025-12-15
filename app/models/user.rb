@@ -15,6 +15,12 @@ class User < ApplicationRecord
   # La contraseña solo se valida si es un registro nuevo o si se está cambiando
   validates :password, length: { minimum: 6 }, if: -> { new_record? || !password.nil? }
 
+  # FIX: Centralizar la lógica de admin
+  def admin?
+    # Permitimos ambas versiones del correo y lo hacemos insensible a mayúsculas
+    ["admin@prrones.com", "admin@prron.com"].include?(email.downcase)
+  end
+
   private
 
   # Si no tenemos un ID, creamos un UUID para que la base de datos no se queje
