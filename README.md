@@ -9,7 +9,7 @@ Si usan VS Community 2022, usen el boton verde de compilado.
 
 Si usan otro IDE o la consola de comando, corran `dotnet run` en /EduLink.Web, esto compila el proyecto.
 
-![Demostración del compilado](./Resources/Demo-2.gif)
+![Demostración del compilado](EduLink/Resources/Demo-2.gif)
 
 ## Despliegue
 No es el titulo que corresponde a esta parte por ahora.
