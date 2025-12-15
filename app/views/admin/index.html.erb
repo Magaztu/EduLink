@@ -13,9 +13,11 @@
         <% end %>
       </ul>
       
+      <%# FIX: Improved search placeholder %>
+      <% placeholder_text = @selected_table == "Inquiry" ? "Buscar por tema o cuerpo..." : "Buscar por ID..." %>
       <%= form_with(url: admin_path, method: :get, class: "d-flex") do |form| %>
         <%= form.hidden_field :table, value: @selected_table %>
-        <%= form.text_field :query, class: "form-control me-2", placeholder: "Buscar por ID...", value: params[:query] %>
+        <%= form.text_field :query, class: "form-control me-2", placeholder: placeholder_text, value: params[:query] %>
         <button class="btn btn-outline-secondary" type="submit">Buscar</button>
       <% end %>
     </div>

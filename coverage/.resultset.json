@@ -1039,6 +1039,27 @@
           null
         ]
       },
+      "C:/Users/Mathias/Documents/DevToDev/Rubbin/limones/app/models/service.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "C:/Users/Mathias/Documents/DevToDev/Rubbin/limones/app/models/provider.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null
+        ]
+      },
       "C:/Users/Mathias/Documents/DevToDev/Rubbin/limones/app/controllers/password_resets_controller.rb": {
         "lines": [
           1,
@@ -1150,36 +1171,22 @@
           null
         ]
       },
-      "C:/Users/Mathias/Documents/DevToDev/Rubbin/limones/app/models/service.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "C:/Users/Mathias/Documents/DevToDev/Rubbin/limones/app/models/provider.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          null
-        ]
-      },
       "C:/Users/Mathias/Documents/DevToDev/Rubbin/limones/app/controllers/admin_controller.rb": {
         "lines": [
           0,
           0,
           null,
           0,
+          null,
           0,
           0,
           null,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
           0,
           0,
           0,
@@ -1333,6 +1340,31 @@
           0,
           null,
           0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "C:/Users/Mathias/Documents/DevToDev/Rubbin/limones/app/controllers/inquiries_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
           0,
           0,
           0,
@@ -1665,6 +1697,17 @@
           0,
           null,
           0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "C:/Users/Mathias/Documents/DevToDev/Rubbin/limones/app/models/inquiry.rb": {
+        "lines": [
+          0,
+          0,
+          null,
           0,
           0,
           0
@@ -2087,6 +2130,6 @@
         "branches": {}
       }
     },
-    "timestamp": 1765773763
+    "timestamp": 1765774185
   }
 }

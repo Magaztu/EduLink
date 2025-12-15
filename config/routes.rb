@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "static_pages#home"
   get 'privacy', to: 'static_pages#privacy'
-  get 'sobre-nosotros', to: 'static_pages#sobre_nosotros' # <-- Nueva ruta
+  get 'sobre-nosotros', to: 'static_pages#sobre_nosotros'
 
   get 'login', to: 'auth#login'
   post 'login', to: 'auth#create_session'
@@ -30,6 +30,9 @@ Rails.application.routes.draw do
     resources :pagos, only: [:new, :create]
     resource :cancelacion, only: [:create], controller: 'cancelaciones'
   end
+
+  # Inquiry Routes
+  resources :inquiries, only: [:new, :create]
 
   get 'admin', to: 'admin#index'
 
