@@ -1,0 +1,115 @@
+<% content_for :title, "Publicar Nuevo Servicio" %>
+
+<div class="container py-5" style="max-width: 850px;">
+  <h1 class="fw-bold mb-2 text-center">Publicar un Nuevo Servicio</h1>
+  <p class="text-muted text-center mb-4">
+    Ofrece tus conocimientos a la comunidad. Rellena los detalles de tu clase o taller.
+  </p>
+
+  <div class="card shadow-sm p-4">
+    <%= form_with(model: @servicio, url: servicios_path, method: :post) do |form| %>
+      <% if form.object.errors.any? %>
+        <div class="alert alert-danger">
+          <ul class="mb-0 ps-3">
+            <% form.object.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="mb-3">
+        <%= form.label :titulo, class: "form-label fw-semibold" %>
+        <%= form.text_field :titulo, class: "form-control", placeholder: "Ej: Taller de Guitarra Acústica" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :descripcion, class: "form-label fw-semibold" %>
+        <%= form.text_area :descripcion, class: "form-control", rows: 4, placeholder: "Describe el contenido, los objetivos y para quién es este servicio." %>
+      </div>
+
+      <hr class="my-4">
+      <h5 class="fw-semibold mb-3">Imagen de Portada</h5>
+      <div class="row g-2 mb-3">
+        <% 5.times do |i| %>
+          <div class="col">
+            <label>
+              <%= form.radio_button :image_url, "service_thumbnails/#{i + 1}.png" %>
+              <%= image_tag "service_thumbnails/#{i + 1}.png", class: "img-fluid rounded", style: "height: 100px; object-fit: cover; cursor: pointer;" %>
+            </label>
+          </div>
+        <% end %>
+      </div>
+      <%# FIX: Removed file upload field %>
+      <hr class="my-4">
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <%= form.label :precio_base, "Precio por hora", class: "form-label fw-semibold" %>
+          <%= form.number_field :precio_base, step: 0.01, class: "form-control" %>
+        </div>
+        <div class="col-md-6 mb-3">
+          <%= form.label :duracion_minutos, class: "form-label fw-semibold" %>
+          <%= form.number_field :duracion_minutos, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :modalidad, class: "form-label fw-semibold" %>
+        <%= form.select :modalidad, 
+                        Enums::Modalidad.constants.map { |c| [c.to_s.humanize, Enums::Modalidad.const_get(c)] }, 
+                        {}, 
+                        { class: "form-select", id: "modalidad-select" } %>
+      </div>
+
+      <div class="mb-3" id="ubicacion-container">
+        <%= form.label :ubicacion, "Ubicación (solo si es presencial)", class: "form-label fw-semibold" %>
+        <%= form.text_field :ubicacion, class: "form-control", placeholder: "Ej: Av. Siempreviva 123", id: "ubicacion-field" %>
+      </div>
+
+      <hr class="my-4">
+      <h5 class="fw-semibold mb-3">Política de Cancelación</h5>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <%= form.label :plazo_cancelacion, "Plazo máximo para cancelar (horas)", class: "form-label fw-semibold" %>
+          <%= form.number_field :plazo_cancelacion, class: "form-control", value: 24, min: 0 %>
+          <div class="form-text">Horas antes del evento hasta las que se permite cancelar.</div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <%= form.label :porcentaje_cargo, "Cargo por cancelación (%)", class: "form-label fw-semibold" %>
+          <%= form.number_field :porcentaje_cargo, class: "form-control", value: 10, min: 0, max: 100 %>
+          <div class="form-text">Porcentaje del precio que se cobra si cancelan tarde.</div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between mt-4">
+        <%= link_to "Cancelar", servicios_path, class: "btn btn-outline-secondary px-4" %>
+        <%= form.submit "Publicar Servicio", class: "btn btn-primary px-4" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const modalidadSelect = document.getElementById('modalidad-select');
+    const ubicacionContainer = document.getElementById('ubicacion-container');
+    const ubicacionField = document.getElementById('ubicacion-field');
+
+    if (!modalidadSelect) return;
+
+    function toggleUbicacion() {
+      if (modalidadSelect.value === 'Online') {
+        ubicacionContainer.style.display = 'none';
+        ubicacionField.disabled = true;
+        ubicacionField.value = '';
+      } else {
+        ubicacionContainer.style.display = 'block';
+        ubicacionField.disabled = false;
+      }
+    }
+
+    modalidadSelect.addEventListener('change', toggleUbicacion);
+    toggleUbicacion();
+  })();
+</script>

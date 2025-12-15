@@ -1,0 +1,65 @@
+<% content_for :title, "Gestionar: #{servicio.titulo}" %>
+
+<div class="container py-5" style="max-width: 850px;">
+
+  <% if flash[:notice] %>
+    <div class="alert alert-success"><%= notice %></div>
+  <% end %>
+  <% if flash[:alert] %>
+    <div class="alert alert-danger"><%= alert %></div>
+  <% end %>
+
+
+  <div class="d-flex justify-content-between align-items-center">
+    <h1 class="fw-bold mb-2">Gestionar Servicio</h1>
+    <%= link_to "Editar Detalles", edit_servicio_path(servicio), class: "btn btn-outline-primary" %>
+  </div>
+  <p class="text-muted mb-4">
+    Aquí puedes ver los detalles de tu servicio y gestionar los horarios disponibles.
+  </p>
+
+  <div class="card shadow-sm p-4 mb-4">
+    <h5 class="fw-semibold">Añadir Nuevo Horario</h5>
+    <%# FIX: Added data: { turbo: false } to force a standard form submission %>
+    <%= form_with(model: [servicio, SlotHorario.new], url: servicio_slot_horarios_path(servicio), data: { turbo: false }) do |form| %>
+      <div class="row g-2 align-items-end">
+        <div class="col-md">
+          <%= form.label :inicio, "Fecha y Hora de Inicio", class: "form-label" %>
+          <%= form.datetime_local_field :inicio, class: "form-control" %>
+        </div>
+        <div class="col-md">
+          <%= form.label :fin, "Fecha y Hora de Fin", class: "form-label" %>
+          <%= form.datetime_local_field :fin, class: "form-control" %>
+        </div>
+        <div class="col-md-2">
+          <%= form.label :cupo_max, "Cupos", class: "form-label" %>
+          <%= form.number_field :cupo_max, class: "form-control", min: 1, value: 1 %>
+        </div>
+        <div class="col-md-auto">
+          <%= form.submit "Añadir", class: "btn btn-primary w-100" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="card shadow-sm p-4">
+    <h5 class="fw-semibold mt-3">Próximos Horarios</h5>
+    <% if slots.any? %>
+      <ul class="list-group">
+        <% slots.each do |slot| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <%= slot.inicio.strftime("%A, %d de %B, %H:%M") %>
+              <span class="badge bg-info rounded-pill ms-2">
+                <%= slot.cupo_actual %> / <%= slot.cupo_max %> reservados
+              </span>
+            </div>
+            <%= button_to "Eliminar", slot_horario_path(slot), method: :delete, class: "btn btn-danger btn-sm", form: { data: { turbo_confirm: '¿Estás seguro?' } } %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="text-muted">No has añadido próximos horarios para este servicio.</p>
+    <% end %>
+  </div>
+</div>

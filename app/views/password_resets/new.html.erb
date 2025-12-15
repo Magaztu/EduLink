@@ -1,0 +1,27 @@
+<% content_for :title, "Restablecer Contraseña" %>
+
+<div class="edulink-auth-wrapper d-flex align-items-center justify-content-center min-vh-100">
+  <div class="card edulink-auth-card">
+    <div class="card-body p-4 p-md-5">
+      <h1 class="h4 fw-semibold mb-3">Restablecer Contraseña</h1>
+      <p class="text-muted mb-4">Ingresa tu correo electrónico y te enviaremos un código para restablecer tu contraseña.</p>
+
+      <%= form_with(url: password_reset_path, method: :post, local: true) do |form| %>
+        <% if flash[:alert] %>
+          <div class="alert alert-danger"><%= flash[:alert] %></div>
+        <% end %>
+
+        <div class="mb-3">
+          <%= form.label :email, "Correo electrónico", class: "form-label" %>
+          <%= form.email_field :email, class: "form-control", required: true %>
+        </div>
+
+        <%= form.submit "Enviar Código", class: "btn btn-primary w-100 mb-3" %>
+      <% end %>
+
+      <div class="text-center small text-muted mt-2">
+        <%= link_to "Volver a Iniciar Sesión", login_path, class: "edulink-link-primary text-decoration-none" %>
+      </div>
+    </div>
+  </div>
+</div>

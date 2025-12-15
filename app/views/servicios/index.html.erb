@@ -1,0 +1,63 @@
+<% content_for :title, "Explorar Servicios" %>
+
+<header class="py-5 edulink-hero text-center">
+  <div class="container">
+    <h1 class="fw-bold mb-2">Explorar clases y servicios</h1>
+    <p class="text-muted mb-4">
+      Encuentra talleres, cursos y servicios educativos personalizados.
+    </p>
+
+    <div class="d-flex justify-content-center">
+      <%= form_with(url: servicios_path, method: :get, class: "input-group input-group-lg edulink-searchbar w-75") do |form| %>
+        <%= form.text_field :query, class: "form-control", placeholder: "Buscar clase, taller o instructor…", value: params[:query] %>
+        <button class="btn btn-primary" type="submit">Buscar</button>
+      <% end %>
+    </div>
+  </div>
+</header>
+
+<main class="container py-5">
+  
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-semibold mb-0">Resultados populares</h2>
+    <% if current_user&.is_a?(Provider) %>
+      <%= link_to new_servicio_path, class: "btn btn-warning fw-semibold shadow-sm" do %>
+        <span class="me-1">+</span> Publicar servicio
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="row g-4">
+    <% if @servicios.any? %>
+      <% @servicios.each do |servicio| %>
+        <div class="col-12 col-md-6 col-lg-4">
+          <%= link_to servicio_path(servicio), class: "text-decoration-none" do %>
+            <div class="card edulink-service-card h-100 shadow-sm">
+              <%# --- IMAGE LOGIC (Simplified) --- %>
+              <% if servicio.image_url.present? && Rails.application.assets.load_path.find(servicio.image_url) %>
+                <%= image_tag servicio.image_url, class: "card-img-top", style: "height: 200px; object-fit: cover;" %>
+              <% else %>
+                <img src="https://placehold.co/600x400?text=<%= servicio.titulo %>" class="card-img-top" style="height: 200px; object-fit: cover;" alt="<%= servicio.titulo %>">
+              <% end %>
+              
+              <div class="card-body">
+                <h5 class="card-title fw-semibold"><%= servicio.titulo %></h5>
+                <p class="card-text text-muted small"><%= truncate(servicio.descripcion, length: 100) %></p>
+              </div>
+              <div class="card-footer bg-white border-0 pt-0 d-flex justify-content-between align-items-center">
+                <span class="fw-bold text-primary"><%= number_to_currency(servicio.precio_base) %></span>
+                <span class="badge bg-info"><%= servicio.modalidad %></span>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="col-12">
+        <div class="text-center p-5 border rounded-3">
+          <p class="lead text-muted">No se encontraron servicios que coincidan con tu búsqueda.</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</main>

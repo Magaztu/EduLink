@@ -1,0 +1,12 @@
+defaults: &defaults
+  tasa_impuesto: 0.13
+  limite_servicios_gratuitos: 10
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

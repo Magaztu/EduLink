@@ -1,0 +1,78 @@
+name: Rails CI
+
+on:
+  push:
+    branches: [ "main", "rewrite/Ruby-Port" ] # Ajusta las ramas
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    name: Ejecutar Pruebas y Linter
+    runs-on: ubuntu-latest
+
+    # Define un servicio de base de datos PostgreSQL que estará disponible para el job.
+    services:
+      postgres:
+        image: postgres:14-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password # Contraseña simple para CI
+          POSTGRES_DB: limones_test
+        ports:
+          - "5432:5432"
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: "postgres://postgres:password@localhost:5432/limones_test"
+
+    steps:
+      # Descargar el código del repositorio
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      # Configurar Ruby y el cache de Bundler
+      - name: Configurar Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+          bundler-cache: true # Instala y cachea las gemas automáticamente
+
+      # Configurar Node.js
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Preparar la base de datos de prueba
+      - name: Preparar base de datos
+        run: |
+          bin/rails db:prepare
+
+      # Ejecutar las pruebas (Minitest)
+      - name: Ejecutar pruebas
+        run: bin/rails test
+
+  lint:
+    name: Analizar Estilo de Código (RuboCop)
+    runs-on: ubuntu-latest
+    needs: test # Se ejecuta en junto a las pruebas
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+          bundler-cache: true
+
+      # Ejecutar RuboCop
+      - name: Ejecutar RuboCop
+        run: bundle exec rubocop

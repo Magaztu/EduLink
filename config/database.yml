@@ -1,0 +1,30 @@
+# PostgreSQL. Versions 12 and up are supported.
+#
+# Install the pg driver:
+#   gem install pg
+#
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  # IMPORTANT: Replace with your PostgreSQL username if it's not 'postgres'
+  username: postgres
+  # IMPORTANT: Replace with your PostgreSQL password
+  password: admin123
+  host: localhost
+
+development:
+  <<: *default
+  database: limones_development
+
+test:
+  <<: *default
+  database: limones_test
+
+production:
+  <<: *default
+  database: limones_production
+  username: limones
+  password: <%= ENV["LIMONES_DATABASE_PASSWORD"] %>

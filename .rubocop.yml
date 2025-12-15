@@ -1,0 +1,120 @@
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - 'test/**/*' # Exclude tests from linting to reduce noise
+
+# --- METRICS (Complexity) ---
+Metrics/MethodLength:
+  Enabled: false
+Metrics/ClassLength:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false
+Metrics/ParameterLists:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+# --- LAYOUT (Formatting) ---
+Layout/LineLength:
+  Enabled: false # Disable line length check completely
+Layout/TrailingWhitespace:
+  Enabled: false
+Layout/SpaceInsidePercentLiteralDelimiters:
+  Enabled: false
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+Layout/EmptyLinesAroundMethodBody:
+  Enabled: false
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: false
+Layout/EmptyLinesAroundBeginBody:
+  Enabled: false
+Layout/EmptyLinesAroundExceptionHandlingKeywords:
+  Enabled: false
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+Layout/MultilineMethodCallIndentation:
+  Enabled: false
+Layout/LeadingCommentSpace:
+  Enabled: false
+Layout/CommentIndentation:
+  Enabled: false
+Layout/ExtraSpacing:
+  Enabled: false
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: false
+Layout/EmptyLines:
+  Enabled: false
+# FIX: Disable EndOfLine check for Windows compatibility
+Layout/EndOfLine:
+  Enabled: false
+
+# --- STYLE (Coding Style) ---
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/StringLiterals:
+  Enabled: false # Allow both single and double quotes
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+Style/ConditionalAssignment:
+  Enabled: false
+Style/GuardClause:
+  Enabled: false
+Style/IfUnlessModifier:
+  Enabled: false
+Style/EmptyMethod:
+  Enabled: false
+Style/SymbolArray:
+  Enabled: false
+Style/RescueModifier:
+  Enabled: false
+Style/RedundantCurrentDirectoryInPath:
+  Enabled: false
+Style/RedundantSelf:
+  Enabled: false
+Style/CommentedKeyword:
+  Enabled: false
+Style/MutableConstant:
+  Enabled: false
+Style/NumericPredicate:
+  Enabled: false
+Style/KeywordParametersOrder:
+  Enabled: false
+Style/PercentLiteralDelimiters:
+  Enabled: false
+
+# --- LINT (Potential Errors/Bad Practices) ---
+Lint/ShadowedException:
+  Enabled: false
+Lint/DuplicateBranch:
+  Enabled: false
+Lint/EmptyClass:
+  Enabled: false
+Lint/UnusedMethodArgument:
+  Enabled: false
+Lint/DuplicateMethods:
+  Enabled: false
+
+# --- BUNDLER ---
+Bundler/OrderedGems:
+  Enabled: false
+
+# --- NAMING ---
+Naming/PredicateMethod:
+  Enabled: false

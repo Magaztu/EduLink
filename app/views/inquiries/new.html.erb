@@ -1,0 +1,37 @@
+<% content_for :title, "Enviar Consulta" %>
+
+<div class="container py-5" style="max-width: 700px;">
+  <h1 class="fw-bold mb-3 text-center">Enviar Consulta</h1>
+  <p class="text-muted text-center mb-4">
+    ¿Tienes alguna duda, sugerencia o problema? Nos encantaría escucharte.
+  </p>
+
+  <div class="card shadow-sm p-4">
+    <%= form_with(model: @inquiry, url: inquiries_path) do |form| %>
+      <% if form.object.errors.any? %>
+        <div class="alert alert-danger">
+          <ul class="mb-0 ps-3">
+            <% form.object.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="mb-3">
+        <%= form.label :topic, "Tema", class: "form-label fw-semibold" %>
+        <%= form.select :topic, Inquiry::TOPICS, { prompt: "Selecciona un tema..." }, class: "form-select" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :body, "Cuerpo del mensaje", class: "form-label fw-semibold" %>
+        <%= form.text_area :body, class: "form-control", rows: 6, maxlength: 400, placeholder: "Describe tu consulta aquí (máximo 400 caracteres)." %>
+      </div>
+
+      <div class="d-flex justify-content-end mt-4">
+        <%= link_to "Cancelar", sobre_nosotros_path, class: "btn btn-outline-secondary me-2" %>
+        <%= form.submit "Enviar", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
