@@ -13,23 +13,21 @@ module Limones
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
-    # Common ones are `templates`, `generators`, or `middleware`, for example.
-    config.autoload_lib(ignore: %w[assets tasks])
+    # Common ones are `templates`, `generators`, or `middleware`.
+    config.autoload_lib(ignore: %w(assets tasks))
 
-    # Set the default locale to Spanish
-    config.i18n.default_locale = :es
-
-    # Ensure the schema format is set to :ruby
-    config.active_record.schema_format = :ruby
-
-    # Set the application time zone
-    config.time_zone = "Central Time (US & Canada)"
-    
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
+    # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # FIX: Disable Action Cable since we are not using it.
+    # This prevents the "cable database not configured" error on deploy.
+    config.action_cable.disable_request_forgery_protection = true
+    config.action_cable.url = nil
+    config.action_cable.mount_path = nil
   end
 end
